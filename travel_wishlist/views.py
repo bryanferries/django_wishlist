@@ -5,7 +5,7 @@ from .forms import NewPlaceForm
 # Create your views here.
 
 def place_list(request):
-
+            # Create the place_list function
     if request.method == 'POST':
         # create new place
         form = NewPlaceForm(request.POST)
@@ -19,7 +19,7 @@ def place_list(request):
     new_place_form = NewPlaceForm()
     return render(request, 'travel_wishlist/wishlist.html', {'places': places, 'new_place_form': new_place_form})
 
-
+# Function for places_visited makes the visited.html page out of Places where visited is true
 def places_visited(request):
     visited = Place.objects.filter(visited=True)
     return render(request, 'travel_wishlist/visited.html', { 'visited': visited })
@@ -34,7 +34,7 @@ def place_was_visited(request, place_pk):
 
     return redirect('place_list')
 
-
+# Make the about page
 def about(request):
     author = 'Bryan'
     about = 'A website to create a list of places to visit'
